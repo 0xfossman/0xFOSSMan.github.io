@@ -1,0 +1,1080 @@
+<!DOCTYPE HTML>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<!-- <meta http-equiv="Cache-Control" content="no-cache"> -->
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="-1">
+<meta http-equiv="CACHE-CONTROL" content="NO-CACHE">
+
+<title>Eglish</title>
+<head>
+<link rel="icon" type="image/png" href="wüsti-32x32.png" sizes="32x32" />
+<link rel="icon" type="image/png" href="wüsti-16x16.png" sizes="16x16" />
+
+
+
+<script src="tmp/bandinfo.js" type="text/javascript"></script>
+<script src="websdr-band_configs.js" type="text/javascript"></script>
+<script src="websdr-extra.js" type="text/javascript"></script>
+<script src="websdr-base.js" type="text/javascript"></script>
+<script src="websdr-soundhooks.js"  type="text/javascript"></script>
+
+<style type="text/css">
+body { color: #00ff00; background-color: black; }
+.ctl { background: #333333;color: #00ff55; float: left; width: auto; margin:5px; border:2px; padding:5px}
+.clear { clear: both}
+.others { font-size: 60%; font-family: sans-serif}
+.memories { font-size: 80%; font-family: sans-serif}
+.scale{position:relative;}
+.scaleabs{position:absolute;}
+#edgelower:hover {background:url('edgelowerbb.png');}
+#edgeupper:hover {background:url('edgeupperbb.png');}
+#yellowbarr {background-color:yellow; top:2px; height:1px}
+#yellowbara:hover #yellowbarr {top:2px; height:2px}
+.hideblind { display:inline; }
+.showblind { display:none; }
+.statinfo0 { float:left; white-space:nowrap; position:relative; border-width:1px;border-style:solid;border-color:#ffc080; background-color:#cc8040;color:black;font-size:12px; }
+.statinfo1 { float:left; position:relative; border-left-width:0px;border-right-width:2px;border-top-width:0px;border-bottom-width:2px;border-style:solid;border-color:black; }
+.statinfo1:hover { z-index:98; }
+.statinfo2 { overflow:hidden; border-width:0px; border-left-width:2px; border-style:solid; border-color:black;position:absolute; }
+.statinfo2:hover { overflow:visible; }
+.statinfol { background-color:#ffc080; }
+.statinfo0l { float:left; white-space:nowrap; position:relative; border-width:1px;border-style:solid;border-color:#80ffc0; background-color:#40cc80;color:black;font-size:12px; }
+.statinfo1l { float:left; position:relative; border-left-width:0px;border-right-width:2px;border-top-width:0px;border-bottom-width:2px;border-style:solid;border-color:black; }
+.statinfo1l:hover { z-index:98; }
+.statinfo2l { overflow:hidden; border-width:0px; border-left-width:2px; border-style:solid; border-color:black;position:absolute; }
+.statinfo2l:hover { overflow:visible; }
+.statinfoll { background-color:#80ffc0; }
+input:not(:checked) + .keylist { display: none; }
+input:checked + .keylist { display: block; }
+.warning { color:red; font-weight:bold; border:2px; border-style:solid; border-color:black; background-color:white; margin:8px; padding:4px; display:none;  }
+
+.tabmenu
+{
+	width: 100%;
+	position: relative;
+	margin: 5px;
+}
+
+.tab_top_active
+{
+	float: left;
+	border-style: solid;
+	border-width: 1px;
+	background-color: #333333; 
+	margin-bottom: -1px;
+	margin-right: -1px;
+	border-color: #000000;
+	color: #000000;
+	font-weight: bold;
+	font-family: calibri;
+	padding: 5px;
+	cursor: pointer;
+}
+
+.tab_top_passive
+{
+	float: left;
+	border-style: solid;
+	border-width: 1px; 
+	background-color: #333333;
+	margin-bottom: -1px;
+	margin-right: -1px;
+	border-color: #808080;
+	color: #808080;
+	font-family: calibri;
+	padding: 5px;
+	cursor: pointer;
+}
+
+.tab_box
+{
+	float: left;
+	border-style: solid;
+	border-width: 1px; 
+	background-color: #333333;
+	border-color: #000000;
+	width: 100%;
+	height: 100%;
+}
+
+.design1 {
+  background-color: white;
+  color: black;
+}
+
+.design2 {
+  background-color: black;
+  color: #00ff00;
+}
+
+.design3 {
+  background-color: gray;
+  color: orange;
+}
+
+.highperf  {
+  font-weight: bold;
+}
+
+.btn  {
+  text-align: center;
+}
+
+.sdr1  {
+  background-color: #FFEE55;
+}
+
+.sdr2  {
+  background-color: #A0FFA0;
+}
+
+.sdr3  {
+  background-color: #AACCFF;
+}
+
+.sdr4  {
+   background-color: #EFCAF7;
+}
+
+.sdr5  {
+   background-color: #03947C; color:#EEEEEE;
+}
+
+.slcmon  {
+   background-color: #FFBEAD;
+}
+
+.defaultrcvbw   {
+   font-weight: bold;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+  display:  inline-block;
+  visibility: hidden;
+  background-color: white;
+  color: black;
+  text-align: left;
+  padding: 4px;
+  margin: 4px;
+  border-radius: 6px;
+  border-color:  black;
+  border-style:  double;
+  word-wrap:  break-word;
+  position: absolute;
+  box-sizing: content-box;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+.main {
+  background-color: #000000;
+}
+</style>
+
+
+</head>
+<iframe src="../txt/kopf.html" style="width: 100%; height: 750px; border: none;"></iframe>
+<!-- Farbdefinierung by wüsti -->
+<body style="background-image: url(bild.jpg);" onload=bodyonload()>
+
+
+<form name="usernameform" action="index1a.html#">
+<script type="text/javascript">
+document_username();
+</script>
+<input type="text" size=1 name="dummytopreventsubmissiononenter" style="display:none" onclick="">
+</form>
+
+<div id="dummyforie"></div>
+<a href="m.html">
+<div id="mobilewarning" class="warning" style="min-height:45px; text-align:center; vertical-align:middle;">
+It seems you are using a mobile device; click here to switch to the mobile version of this site.
+</div>
+</a>
+<div id="javawarning" class="warning">
+It seems Java is not installed or disabled on your computer. You need to install and/or enable it for this website to work properly.
+<br>Since Java version 7u51, Java needs to be enabled separately for each website; see <a href=http://websdr.org/java.html>http://websdr.org/java.html</a> for instructions.
+</div>
+<div id="html5warning" class="warning">
+Your browser does not seem to support HTML5 WebAudio; please try a recent version of Firefox, Chrome, Opera or Safari; or switch to Java.
+</div>
+<hr>
+
+<form name="viewform" action="index1a.html#">
+<div class="ctl">
+  <b>View:</b>
+  <span id="viewformbuttons"></span>
+</div>
+
+<!-- Farbdefinierung by wüsti -->
+<div class="ctl">
+
+  <b>Allow keyboard:</b>
+  <input type="checkbox" name="allowkeys" value="" id="allow_kbd">
+  <div class="keylist">
+  <tt><b>j k &larr; &rarr;</b></tt>: freq down/up (+shift/ctrl/alt faster)
+  <br>
+  <tt><b>u l c a f</b></tt>: USB, LSB, CW, AM, FM
+  <br>
+  <tt><b>z Z</b></tt>: center/zoom waterfall 
+  <br>
+  <tt><b>g</b></tt>: enter frequency
+  <br>
+  <tt><b>m</b></tt>: mute/unmute audio
+  <br>
+  <tt><b>s</b></tt>: toggle squelch
+  </div>
+</div>
+</form>
+
+<form name="html5choiceform" action="index1a.html#" style="float:right">
+
+<!-- Farbdefinierung by wüsti -->
+<div class="ctl">
+
+<div id=html5choice>
+</div>
+</div>
+<br style="clear:both">
+</form>
+
+<div style="position:relative" class=clear>
+<div id="test">
+</div>
+<div id="waterfalls">
+</div>
+<div class="hideblind">
+ <img src="edgelower.png" title="drag to change filter" id="edgelower" onmousedown="mousedownlower(event)" class="scaleabs" alt="">
+ <img src="edgeupper.png" title="drag to change filter" id="edgeupper" onmousedown="mousedownupper(event)" class="scaleabs" alt="">
+ <div id="yellowbara">
+  <div id="yellowbar" title="drag to tune" class="scaleabs" style="position:absolute;width:100px;height:18px;background-color:transparent" onmousedown="mousedownpassband(event)">
+   <div id="yellowbarr" class="scaleabs" style="position:relative;left:0px;">
+    <div class="scaleabs" style="position:absolute;width:0px;height:0px;"></div>
+   </div>
+  </div>
+  <img src="carrier.png" title="drag to tune" id="carrier" onmousedown="mousedownpassband(event)" class="scaleabs" style="z-index:2" alt="">
+ </div>
+</div>
+</div>
+
+<!--<br> -->
+
+<!-- Modified from the original "local-clock.html" to also display UTC  KA7OEI 20200131       -->
+
+<!-- File: ~/utc-clock.html                                                          -->
+
+<!-- This html fragment displays the user's PC time in local  UTC below the waterfall. -->
+
+<div align="left"">
+<form name="Tick">
+<input type="text" style="font-size:65%" size="110" name="Clock" default;>
+</form>
+</div>
+
+<script type="text/javascript">
+
+function show(){
+    var Digital=new Date()
+    var hours=Digital.getUTCHours()
+    var minutes=Digital.getUTCMinutes()
+    var seconds=Digital.getUTCSeconds()
+
+    if (hours>=24){
+        hours="0"
+        //this makes the first hour of the day display as "00" UTC (the 2nd "0" is added below).
+    }
+    // Add leading zeros when needed:
+    if (hours<=9)
+        hours="0"+hours
+    if (minutes<=9)
+        minutes="0"+minutes
+
+    var LDigital=new Date()
+    var l_hours=LDigital.getHours()
+    var l_minutes=LDigital.getMinutes()
+    var l_seconds=LDigital.getSeconds()
+    if (l_hours>=24){
+        l_hours="0"
+        //this makes the first hour of the day display as "00" (the 2nd "0" is added below).
+    }
+    // Add leading zeros when needed:
+    if (l_hours<=9)
+        l_hours="0"+l_hours
+    if (l_minutes<=9)
+        l_minutes="0"+l_minutes
+
+    // String with UTC and local time
+
+    document.Tick.Clock.value=" "+hours+""+minutes+" UTC  "+l_hours+""+l_minutes+" Local  (Your computer)               ";
+    // Cycle between messages over the course of a minute
+
+    if((seconds) < 7)
+       document.Tick.Clock.value+="Nicht das ganze Band sichtbar?"
+    else if(seconds < 14)
+       document.Tick.Clock.value+="Versuch mal rauszuzoomen!"
+    else if(seconds < 18)
+       document.Tick.Clock.value+=""  
+    else if(seconds < 24)
+       document.Tick.Clock.value+="8 USB Nachteulenrunde"
+    else if(seconds < 31)
+       document.Tick.Clock.value+="8 USB Bayernrunde Sonntags ab 10:00"
+    else if(seconds < 38)
+       document.Tick.Clock.value+="Aktivitätenticker"
+    else if(seconds < 45)
+       document.Tick.Clock.value+=""
+    else if(seconds < 57)
+       document.Tick.Clock.value+="Hilfe benötigt? auf Youtube nach ''WebSDR bedienung'' suchen!"
+    else 
+       document.Tick.Clock.value+=""
+
+    setTimeout("show()",5000)
+}
+    show()
+</script>
+
+
+<!-- Block 2 -->
+<!-- Begin of waterfall and audio control block -->
+<!-- Farbdefinierung by wüsti -->
+<div class="ctl" style="width:300px;hight:260px">
+  <div class="hideblind">
+    <div style="width:250px;background-color:black;">
+    <br>
+    <div id="smeterpeak" style="width:100px;height:4px;background-color:#ff8000;position:absolute;">
+      <div style="position:absolute;width:0px;height:0px;"></div>
+    </div>
+    <div id="smeterbar" style="width:100px;height:4px;background-color:#00ff00;position:absolute;">
+      <div style="position:absolute;width:0px;height:0px;"></div>
+    </div>
+    <br>
+    <img src="smeter1.png" alt="[scale]">
+    <br>
+    </div>
+  </div>
+<span style="font-size:83%">
+  <span id="numericalsmeter" style="color:green">?</span><font color="green">&hairsp;dBm</font>&nbsp;<font color="red">&nbsp;Peak</font>
+  <span id="numericalsmeterpeak" style="color:red">?</span><font color="red">&hairsp;dBm</font>
+  <span style="color:blue">&nbsp;<span id="att_set">?</span> </span>
+</span>
+  <br>
+
+<!-- NOTE:  On the slider below  Set the "min" and "max" values, below, to the values in "sigsquelch_minval" and "sigsquelch_maxval" in "websdr-extra.sh  -->
+
+<!--   *** S-Meter Squelch - BEGIN - comment out just below this line if you don't want the signal level squelch -->
+
+
+  <span id="sigsquelch1" style="white-space:nowrap; width:50%">
+    &nbsp;Squelchregler:&nbsp;&nbsp;<span id="sigsquelch_val"> </span>
+  </span> 
+
+  &nbsp;&nbsp<input type="button" value="Set" onclick="set_sigsquelch(1)">
+
+<!-- INFO button for S-Meter squelch -->
+
+&nbsp;&nbsp;
+<input style="font-style: italic; font-size:85%; background-color: transparent; border-color: transparent" type="submit" value="Info" title="Ein schnellerer Squelch!.&#013&#013Am besten für FM oder sehr starke AM Signale - Weniger Nützlich für SSB und wo QSB existiert.&#013&#013SET-Knopf setzt die schaltschwelle knapp über das empfangende Signal - nur setzen, wenn kein Träger und nur Rauschen ist." default;">
+
+
+<br>
+&nbsp;&nbsp;
+<input type="range" title="S-meter based squelch - FASTER than noise-based squelch.  Set slider 3-6 dB ABOVE the no-signal S-meter reading.  Suggested that it be used ONLY for FM and strong AM signals" min="-145" max="-13" id="sigsquelch2" name="sigsquelch" style="width:235px;" min="-145" max="-13" id="sigsql_id"" value="-145" step="1" oninput="set_sigsquelch(this.value)">
+
+  <hr>
+  <span id="volumecontrol" style="white-space:nowrap; width:50%">
+    Volume:
+    <input style="width:190px;" type="range" min="-20" max="6" id="volumecontrol2" name="volume" value="0" step="1"
+    oninput="soundapplet.setvolume(Math.pow(10,this.value/10.))"
+    onchange="soundapplet.setvolume(Math.pow(10,this.value/10.))">
+  </span>
+<span id="audiowarn" style="font-size:85%;color:red"></span>
+
+
+<hr>
+
+
+<!-- *** S-Meter Squelch - END - Put "end" comment above this line if you don't want the signal level squelch -->
+
+
+  <input id="mutecheckbox" title="Mutes audio - stops audio stream at server (reduces bandwidth)" type="checkbox" value="" onclick="setmute(this.checked)">Mute
+  <input id="squelchcheckbox" title="Noise-based squelch - Use S-meter squelch, if available, for faster response" type="checkbox" value="" onclick="setsquelch(this.checked)">Squelch
+  <input id="autonotchcheckbox" title="Formerly AUTONOTCH - Automatically filter out interfering carrier (beep/whistle) - can prevent desense on strong carriers - May be used with Notch2 and Vari-Notch" type="checkbox" value="" onclick="setautonotch(this.checked)">Notch
+<br>
+  <input id="notch2checkbox" title="Audio-only autonotch filter capable of handling multiple tones- will not prevent desense from very strong carriers - may be used with Notch1 and Vari-notch" type="checkbox" value="" onclick="setnotch2(this.checked)">Multinotch
+  <input id="hiboostcheckbox" title="6dB high frequency boost with knee centered at 1500 Hz - Use with DSP noise reduction and/or to improve intelligibility of speech" type="checkbox" value="" onclick="sethighboost(this.checked)">High Boost
+  
+  </div>
+ 
+    
+</div>
+<!-- End of S-Meter and audio control block -->
+</div>
+
+
+<!-- Block 1-->
+
+<!-- Begin of frequency, mode, band and memory block -->
+
+<!-- Farbdefinierung by wüsti -->
+<div class="ctl" style="hight:260px;">
+
+<form name="freqform" action="index1a.html#" onsubmit="setfreqif(this.frequency.value); return false;">
+<!--  <div class="hideblind">
+-->
+  <b>Frequency:</b>
+  <span class="showblind">
+  <input id="freqstepm3" type="button" value="- - -" onclick="freqstep(-3)">
+  <input type="button" value="- -" onclick="freqstep(-2)">
+  <input type="button" value="-" onclick="freqstep(-1)">
+  </span>
+  <input type="text" size=10 name="frequency" onkeyup="setfreqif_fut(this.value);"> kHz
+  <input type="submit" style="position:absolute; left:-999px" value="submit">  <!-- IE sillyness; other browsers are fine with visibility:none -->
+  
+<br>
+  <span style="font-size:65%">Enter frequency, or by clicking/dragging/scrollwheel on the frequency scale.</span>
+
+
+  <br>
+  <button type="button" value="- - -" onclick="freqstep(-5)" id="step_n5">
+  <button type="button" value="- -" onclick="freqstep(-4)" id="step_n4">
+  <button type="button" value="-" onclick="freqstep(-3)" id="step_n3">
+  <button type="button" value="-/" onclick="freqstep(-2)" id="step_n2">
+  <button type="button" value="-//" onclick="freqstep(-1)" id="step_n1">
+  </span>
+  <!-- Added button to snap to nearest integer khz frequency - 20180214 KA7OEI -->
+  <button type="button" value="= kHz" onclick="freqstep(9)" id="step_9">
+  <button type="button" value="\\+" onclick="freqstep(+1)" id="step_p1">
+  <button type="button" value="\+" onclick="freqstep(+2)" id="step_p2">
+  <button type="button" value="+" onclick="freqstep(+3)" id="step_p3">
+  <button type="button" value="++" onclick="freqstep(+4)" id="step_p4">
+  <button type="button" value="+++" onclick="freqstep(+5)" id="step_p5"></button>
+<hr>
+  <!-- VFO A/B buttons -->
+
+  &nbsp;&nbsp;&nbsp<b>VFO:</b>
+  <input type="button" value="A/B" onclick="vfo_ab(+1)">
+  <input type="button" value="A=B" onclick="vfo_ab(+2)">
+  <input type="button" value="B=A" onclick="vfo_ab(+3)">
+<!-- VFO A/B display -->
+  &nbsp;&nbsp;
+  <b>VFO:</b>
+  &nbsp;<span id="vfosel">?</span>
+  &nbsp;
+<span style="font-size:65%">
+  <span id="vfoinfo"></span>
+</span>
+  <br>
+  <span style="font-size:65%">Use the <b>= kHz</b> button to snap to the nearest kHz.<br></span>
+
+<hr>
+<center>
+    <input type="button" class="defaultrcvbw" value="LSB"     onclick="setmf('lsb', -2.86, -0.15);">
+    <input type="button" class="defaultrcvbw" value="USB"     onclick="setmf('usb',  0.15,  2.86);">
+    <input type="button" class="defaultrcvbw" value="AM"      onclick="setmf ('am',  -4  ,  4  );">
+    <input type="button" value="FM"      onclick="setmf ('fm',  -4  ,  4  );">
+    <input type="button" value="SAM-U" onclick="set_syncam('sam-u');" title="Synchronous AM demod - UPPER sideband">
+    <input type="button" value="SAM-L" onclick="set_syncam('sam-l');" title="Synchronous AM demod - LOWER sideband">
+<!-- Display status of Synchronous AM demodulator (if enabled) -->
+  <span style="font-size:85%" id="ncofreq">freq???</span>
+
+  <!-- Display current mode on screen - KA7OEI 20190227 -->
+  <br>
+  <b>Mode:</b>&nbsp;&nbsp;<span style="color:#00ffff;font-weight:bold" id="displaymode">?</span>
+  &nbsp;
+ <span style="color:red;font-weight:bold" id="mutestatus"></span>
+  &nbsp;
+  <span style="color:red;font-weight:bold" id="squelchstatus"></span>
+  &nbsp;
+  <span style="color:red;font-weight:bold;font-size:90%" id="sigsquelchstatus"></span>
+ </center>
+<hr style="height:2px;color:lightgray;">
+
+<span class="sdr1">
+  <script type="text/javascript"> document_bandbuttons(); </script>
+</span>
+ <br>
+
+<!-- The following file includes buttons to switch to other bands on other WebSDR servers -->
+
+<!-- File:  server_buttons.html  -->
+
+<!-- This file contains "band" buttons to access other WebSDR servers -->
+
+<!-- End of frequency, mode, band and memory block -->
+
+<!-- *** Deviation and SNR metering - BEGIN  - Put beginning comment below this line if you don't want these functions.  -->
+
+
+<div style="font-size:100%">
+ <span id="devpk">devpk</span>
+ <span id="dev_avg">dev_avg</span>
+ <span id="dev_pkavg">dev_pkavg</span>
+
+ &nbsp;&nbsp;
+
+<!-- INFO button for SNR -->
+
+<input style="font-style: italic; font-size:85%; background-color: transparent; border-color: transparent" type="submit" value="Info" title="Shows apparent signal-noise ratio of receive audio over the past 2 seconds based on min/max.&#013&#013Pulse-type noise can result in artifically high SNR readings - particularly on HF.&#013&#013These readings are NOT affected by DSP noise reduction.&#013&#013In FM ONLY, the average, min and max deviation is shown." default;">
+
+</div>
+
+
+
+<!-- *** Deviation and SNR metering End - Put "end" comment above this line if you don't want these functions  -->
+
+
+
+  
+  
+  <div id="lr_span">
+  
+ </div>
+</div>
+
+
+
+<!-- Begin of Waterfall control block -->
+<div class="hideblind">
+
+<!-- Farbdefinierung by wüsti -->
+<div class="ctl" style="hight:260px; ">
+
+  <b>Waterfall view:</b>
+  <br>
+  <table>
+    <tr>
+    <td>
+    <span title="zoom out one step"><input type="button" value="zoom out" onclick="wfset(1);"></span>
+    <span title="zoom in one step"><input type="button" value="zoom in" onclick="wfset(0);"></span>
+    </td>
+    </tr>
+    <tr>
+    <td>
+    <span title="view entire frequency range of this receiver"><input type="button" value="max out" onclick="wfset(4);"></span>
+    <span title="zoom in as deep as possible"><input type="button" value="max in" onclick="wfset(2);"></span>
+    </td>
+    </tr>
+    <tr><td>
+  <span style="font-size:65%">Or use scroll wheel & dragging on waterfall.</span>
+    </td></tr>
+    <tr><td>
+    Speed:
+    <select id="wfspeed" onchange="waterfallspeed(this.value)">
+      <!-- Original values:  4, 2, 1 for slow, med, fast, default medium - KA7OEI 20180110 -->
+      <option value="32">crawling</option>
+      <option value="16">slow</option>
+      <option selected value="8">medium</option>
+      <option value="4">fast</option>
+      <option value="2">faster</option>
+    </select>
+    <br>
+    Size:
+    <select id="wfsize" onchange="waterfallheight(this.value)">
+      <!-- Added "wee" and "ginormous" - KA7OEI 20180205 -->
+      <option value="25">minni</option>
+      <option value="50">klein</option>
+      <option selected value="100">mittel</option>
+      <option value="200">groß</option>
+	  <option value="400">riesig</option>
+      <option value="2400">XXXXXL</option>
+    </select>
+    <br>
+    View:
+    <select id="wfmode" onchange="waterfallmode(this.value)">
+      <option value="0">spectrum</option>
+      <option selected value="1">waterfall</option>
+      <option value="2">weak sigs</option>
+      <option value="3">strong sigs</option>
+    </select>
+    </td></tr>
+    <tr><td>
+<script type="text/javascript"> if (dxinfoavailable) document.write('<input type="checkbox" id="hidedxbox" name="hidedx" value="" onclick="sethidedx(this.checked)">Hide labels'); </script>
+<br>
+<span style="font-size:65%">Toggle "Hide labels" if labels are missing.</span>
+</td/></tr>
+  </table>
+</div>
+</div>
+<style>
+
+</style>
+
+
+
+
+
+
+  </div>
+<br style="clear:both">
+<script>
+  /**
+   * öffnet ein Tab (klick auf oberen Tab (Reiter).
+   * @param index: welcher Tab wurde geklickt, 1 bis n.
+   */
+  function openTab(index) {
+    var element = document.getElementsByTagName('div');
+    var name = "";
+    var obj;
+
+    for (var i = 0; i < element.length; i++) {
+      name = element[i].id;
+      if (name.substr(0, 8) == 'tab_box_') {
+        obj = document.getElementById(name);
+
+        obj.hidden = true;
+
+      }
+      if (name.substr(0, 8) == 'tab_top_') {
+        obj = document.getElementById(name);
+        obj.setAttribute('class', 'tab_top_passive');
+      }
+
+    }
+    var tab = document.getElementById("tab_box_" + index);
+    tab.hidden = false;
+    tab = document.getElementById("tab_top_" + index);
+    tab.setAttribute('class', 'tab_top_active');
+
+    /* www.MrKnowing.com */
+  }
+</script>
+
+
+<!-- ########## Tabellendarstellung #############-->
+<!--<form name="viewform" action="#">-->
+<div class="ctl">
+  <script type="text/javascript" src="tabmenu.js"></script>
+  <!-- Tab Menü -->
+  <div id='tabmenu' class='tabmenu'>
+    <!-- Tab-Reiter -->
+    <div id='tab_top_1' class='tab_top_active' onclick='javascript:openTab(1)';>Aktuell</div>
+    <div id='tab_top_2' class='tab_top_active' onclick='javascript:openTab(2)';>History</div>
+    <div id='tab_top_3' class='tab_top_active' onclick='javascript:openTab(3)';>Filter</div>
+    <div id='tab_top_4' class='tab_top_active' onclick='javascript:openTab(4)';>Speicher</div>
+    <div id='tab_top_5' class='tab_top_active' onclick='javascript:openTab(5)';>Logbuch</div>
+    <div id='tab_top_6' class='tab_top_active' onclick='javascript:openTab(6)';>Signal-Plot</div>
+    <div id='tab_top_7' class='tab_top_active' onclick='javascript:openTab(7)';>User</div>
+    <div id='tab_top_8' class='tab_top_active' onclick='javascript:openTab(8)';>Chatbox</div>
+    <div id='tab_top_9' class='tab_top_active' onclick='javascript:openTab(9)';>Spezial</div>
+    <div id='tab_top_10' class='tab_top_active' onclick='javascript:openTab(10)';>RigSync</div>
+    <div id='tab_top_11' class='tab_top_active' onclick='javascript:openTab(11)';>Links Frequenzen Kanäle</div>
+    <div id='tab_top_12' class='tab_top_active' onclick='javascript:openTab(12)';>Hardware</div>
+    <div id='tab_top_13' class='tab_top_active' onclick='javascript:openTab(13)';>Design</div>
+    <div id='tab_top_14' class='tab_top_active' onclick='javascript:openTab(14)';>Mitwirkende</div>
+
+    <!--float aufheben-->
+    <div style='clear: both;'></div>
+    <!-- Tab-Box -->
+    <!-- Aktuelles -->
+    <div id='tab_box_1' class='tab_box' style="width: 1025px; height:260px;overflow:auto;">
+      <iframe src="/txt/news.html" style="width: 100%; height: 85%; border: none;"></iframe>
+                    Folgender link behandelt die "kein Ton" Probleme im
+                    <br>
+                    <a
+                    href="https://support.mozilla.org/de/kb/automatische-tonwiedergabe-erlauben-bzw-blockieren"target="_blank">Firefox </a>
+                    <br>
+                    <a
+                    href="https://www.computerbild.de/artikel/cb-Tipps-Internet-chrome-kein-Ton-30893577.html"target="-blank">Google Chrome </a>
+                    <br>
+                    <a
+                    href="https://www.helpster.de/opera-kein-sound-was-tun_114272"target="-blank">Opera </a>
+    </div>
+
+    <!-- History -->
+    <div id='tab_box_2' class='tab_box' style="width: 1025px; height:260px;">
+      <b>History</b>
+    </div>
+
+    <!-- Filter -->
+    <div id='tab_box_3' class='tab_box' style="width: 1025px; height:260px; overflow:auto;">
+<table>
+    <tr>
+<!-- Changes made to default LSB/USB BW copying values of KFS - KA7OEI 20180304 -->
+    <td><input type="button" value="CW-wide" onclick="setmf ('cw', -1.15, -0.35);"></td>
+    <td><input type="button" class="defaultrcvbw" value="LSB-wide"     onclick="setmf('lsb', -2.86, -0.15);"></td>
+    <td><input type="button" class="defaultrcvbw" value="USB-wide"     onclick="setmf('usb',  0.15,  2.86);"></td>
+    <td><input type="button" class="defaultrcvbw" value="AM-wide"      onclick="setmf ('am',  -4  ,  4  );"></td>
+    <td><input type="button" value="FM-wide"      onclick="setmf ('fm',  -8  ,  8  );"></td>
+    <td><input type="button" value="SAM-U" onclick="set_syncam('sam-u');" title="Synchronous AM demod - UPPER sideband"></td>
+    
+    </tr><tr>
+    <td><input type="button" value="CW-nrw" onclick="setmf('cw',-0.78, -0.72);"></td>
+    <td><input type="button" value="LSB-nrw"  onclick="setmf('lsb', -2.2, -0.5);"></td>
+    <td><input type="button" value="USB-nrw"  onclick="setmf('usb',  0.5,  2.2);"></td>
+    <td><input type="button" value="AM-nrw"   onclick="setmf ('am', -2.5,  2.5);"></td>
+    <td><input type="button" value="FM-nrw"      onclick="setmf ('fm',  -3  ,  3  );"></td>
+    <td><input type="button" value="SAM-L" onclick="set_syncam('sam-l');" title="Synchronous AM demod - LOWER sideband"></td>
+
+    <td><input style="font-style: italic; font-size:85%; background-color: transparent; border-color: transparent" type="submit" value="Info" title="SAM-U and SAM-L allow the syncronous detection of the upper and lower sidebands of an AM signal.&#013&#013This mode can improve audio quality for AM signals - particularly when fading is present.&#013&#013Double sideband synchronous AM is not available because of the architecture of the WebSDR - see the FAQ for more information." default;"></td>
+    </tr>
+  </table>       
+&nbsp;DSP Noise Reduction:
+            <select id="nrcheckbox" onchange="setlmsnr(this.value)" title="DSP Noise reduction to reduce background hiss and white noise - 
+                Higher settings cause more artifacts. Use with 'High Boost' to improve intellgibility. May use significant CPU power on YOUR computer">
+             <option selected value=0>Off</option>
+             <option value=1>Low</option>
+             <option value=2>Medium</option>
+             <option value=3>High</option>
+             <option value=4>Strong</option>
+             <option value=5>Extreme</option>
+            </select>
+        
+        <span style="font-size:65%"><center>More info about Noise Reduction, <br>Notch2 & High Boost <a href="websdr.ddnss.org/txt/info.html" target="_blank"><b><i>here</i></a></b></center></span>
+   
+            &nbsp;&nbsp;Vari-Notch (Hz):&nbsp;&nbsp; <span id="vnotch_freq"><b>Off</b></span>
+           
+
+            <input type="range" title="Sets frequency of tunable notch filter - may be used with other notch filters.  DOES NOT prevent desense from strong signals!" min="90" max="2500" id="vnotch_slider" name="vnotch_slider" style="width:275px;" value="0" step="1" oninput="set_vnotchfilter(this.value)" type="range">
+
+<br>          
+
+            &nbsp;&nbsp;
+            CW Peak (Hz):&nbsp;&nbsp; <span id="cwpk_freq"><b>Off</b></span>
+            &nbsp;&nbsp;&nbsp;Ref. Tone
+
+              <input id="cwpeaktone" title="When CW peaking filter is enabled, activates a reference tone at the peak frequency as an aid in tuning" type="checkbox" value="" onclick="setcwpeaktone(this.checked)">
+         
+            <input type="range" title="Sets frequency of CW peaking filter - use the 'Ref Tone' to active a frequency reference tone to aid in setting." min="195" max="1500" id="cwpk_slider" name="cwpeak_slider" style="width:275px;" id="cwpeak_sel" name="cw_peakfilt" value="0" step="5" oninput="set_cwpeakfilter(this.value)" type="range">
+<br>
+<b>Bandwidth: </b>
+  <br>
+  <span style="font-weight:bold" id="displaymode2">?</span>:&nbsp;&nbsp;
+  <b><span id="numericalbandwidth6">?</span></b> kHz @ -6dB;
+  <b><span id="numericalbandwidth60">?</span></b> kHz @ -60dB.
+  &nbsp;<br><i>Default BW in <b>bold</b></i>.
+  <br>
+  
+<span style="font-size:85%">
+&nbsp;<b>USB CW RX:</b>
+  <input id="usbcwbox" title="Use USB for CW reception when checked" type="checkbox" value="" onclick="setusbcw(this.checked)"></span>
+<span style="font-size:65%">Check box, or put&nbsp;&nbsp;<b>?usbcw</b>&nbsp;&nbsp;<br>in the URL for USB CW reception.
+&nbsp;&nbsp;<i>CW uses a <br>center frequency of <b>750 Hz</b> and LSB by default.</i>
+</span>
+    </div>
+
+    <!-- Speicher -->
+    <div id='tab_box_4' class='tab_box' style="width:1025px;height: 260px; overflow:auto; font-family: monospace">
+<b>Memories:</b>
+  <div id="memories" class="memories"></div>
+  <span style="font-size:65%">Memories are stored as cookies on <i><b>your</b></i> computer, <i>not</i> on the server.</span>
+</form>
+    
+    </div>
+
+    <!-- Logbuch -->
+    <div id='tab_box_5' class='tab_box' style="width: 1025px; height:260px;"></div>
+
+    <!-- S-Meter-Plot -->
+    <div id='tab_box_6' class='tab_box' style="width: 1025px; height:260px;overflow:auto;">
+<b>Sig. strength plot:</b>
+    <select id="sgraphchoice">
+      <option value=0>none</option>
+      <option value=1>fast</option>
+      <option value=10>slow</option>
+      <option value=11>fast w/pk</option>
+      <option value=21>slow w/pk</option>
+    </select>  <div>
+    <canvas id="sgraph" style="width:100%; display:none;"></canvas>
+  </div>
+</div>
+
+    <!-- Benutzer-Skala -->
+    <div id='tab_box_7' class='tab_box' style="width: 1025px; height:260px;">
+<p>
+<form name="form1" action="index1a.html#">
+There are currently <span id=numusers>?</span> user(s) on this WebSDR:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input id="compactviewcheckbox" type="checkbox" name="compactview" value="" onclick="setcompactview(this.checked)">compact view
+<br>
+<div id=users></div>
+</form>
+</div>
+
+    <!-- chatbox -->
+    <div id='tab_box_8' class='tab_box' style="width: 1025px; height:260px;">
+<!--Chat box commented out - 20180109-->
+<div id="chatboxspan">
+<p><b>Chatbox:</b><br>
+<span style="font-size:80%">
+This chatbox is intended to discuss the operation of the WebSDR.
+<br>
+The operators of this site disclaim any responsibility for text appearing in this chatbox.
+</span>
+<div id="chatboxnew" style="background-color:#555555; overflow:auto; height:125px; width:100%; font-family: monospace"></div>
+<br>
+<form name="chatform" onsubmit="return sendchat()" action="#">
+<input type="text" size=80 name="chat" onclick="">
+<input type="button" value="chatbox submit" onclick="return sendchat()">
+</form>
+<br>
+</div>
+</div>
+
+    <!-- Spezialoptionen -->
+    <div id='tab_box_9' class='tab_box' style="width: 1025px; height:260px;">
+    <!-- *** Added Gain control - add comment below this line and above the ending comment if you don't want added gain control  -->
+
+
+<style type="text/css">
+  .sw_1:not(:checked) ~ .disablegainhang , .sw_2:not(:checked) ~ .disablegaincontrol , .sw3:not(:checked) ~ .disablesemi , .hiddencontrol {opacity: 0.25; pointer-events:none;}
+</style>
+<br><hr>
+<b>Gain control:</b>
+
+<!-- INFO "button" for AGC -->
+
+&nbsp;&nbsp;
+<input style="font-style: italic;  font-size:85%; background-color: transparent; border-color: transparent" type="submit" value="Info" title="'RF AGC' is the WebSDR's original AGC, but it has problems in AM with rapid QSB resulting in clicks and pops. &#013&#013'ALT AGC' is a slower AGC intended for use with AM signals and is more resistant to QSB-related issues.  It works on SSB, but it is not optimized for such.&#013&#013'Manual' disables the AGC entirely, requiring manual control with the slider to ride QSB and different signal strengths.&#013&#013'Alt AGC' and 'Manual' are disabled when using FM." default;">
+
+
+<br>
+<input class="sw_1" id="id_autogain" name="agc-mode" value="automatic" title="Normal AGC mode" checked="checked" onchange="set_agcmode(10000)" type="radio">RF AGC
+
+<input class="sw_3" id="id_altagc" name="agc-mode" value="audio" title="EXPERIMENTAL - Alt AGC-may work better for AM reception.  It works for SSB, but isn't optimized for such.  DISABLED for FM."  onchange="set_agcmode(100)" type="radio">Alt AGC
+
+<input class="sw_2" id="id_manualgain" name="agc-mode" value="manual" title="Manual gain can improve audio by reducing background noise; if unsure use automatic setting - will automatically reduce gain if severe clipping occurs. DISABLED for FM."  onchange="set_agcmode(document.getElementById('manualgain').value)" type="radio">Manual
+
+<div class="disablegaincontrol">
+ <b>Gain:</b>
+ <input style="width:195px;" min="-60" max="30" id="manualgain" name="manualgain" value="-20" step="1" oninput="if (soundapplet) soundapplet.setparam('gain='+this.value)" ;="" onchange="set_agcmode(this.value)" type="range">
+</div>
+<span style="font-size:65%"><center>Try "Alt AGC" for better AM reception, particularly with QSB.</center></span>
+
+<!-- *** End Gain control - add comment above this line if you don't want added gain control -->
+<hr>
+<div id="record_span" style="display:none">
+    <hr>
+    <b>Audio recording: </b>
+    <button id="recbutton" onclick="record_click(); return false">start</button>
+    <span id="reccontrol"></span>
+    <br>
+    <div id="recwarning" style="width:900px; display:none; font-size:-1; color:red">Recorded audio  <i><b>includes</b></i> any DSP filtering, Notch2 or High Boost. Your browser may not support downloading the recording; Try it anyway, but if it doesn't work, please try a recent version of Firefox, Chrome or Opera.</div>
+  </div>
+<b>Audio channel:</b>
+<span id="rightleft" title="Select to which channel(s) audio is sent">
+      <input type="radio" id="au-out-left" name="au-out" value="left" onchange="if (soundapplet) soundapplet.setstereo(0)">Left
+      <input type="radio" id="au-out-both" name="au-out" value="mono" checked onchange="if (soundapplet) soundapplet.setstereo(-1)">Both
+      <input type="radio" id="au-out-right" name="au-out" value="right" onchange="if (soundapplet) soundapplet.setstereo(1)">Right
+</span>
+    </div>
+
+    <!-- Catsync -->
+    <div id='tab_box_10' class='tab_box' style="width: 1025px; height:260px;">
+      <b>TRX/Funkgerät mit Cat-Schnittstelle mit diesem Websdr Syncronisieren</b>
+      <br> hier wird beschrieben wie ein Websdr und ein Funkgerät Syncronisiert werden kann.
+      <br>
+      <a href="https://catsyncsdr.wordpress.com/">Catsync</a> Englisch,
+      <a href="https://cat4web.r8acc.ru/">Cat4web</a> Russisch oder mit
+      <a href="https://cat4web-r8acc-ru.translate.goog/?_x_tr_sl=auto&_x_tr_tl=de&_x_tr_hl=de&_x_tr_pto=wapp">Google Translator</a>
+      <br>
+      Cat4web gibt es auch als Google Chrome- und auch als FirefoxPlungin.<br>
+      <br>
+      Supersdr um Kiviempfänger mit Eurem Rig syncronisieren zu können
+      <a target="_blank" href=https://github.com/mcogoni/supersdr>Supersdr</a>
+      <br>
+      ich halte euch hier mal auf den lauffendem, was alles so existiert.
+    </div>
+
+    <!-- Links -->
+    <div id='tab_box_11' class='tab_box' style="width: 1025px; height:260px;overflow:auto;">
+    <br>
+        in Nürnberg hier auf dem WebSDR:<br>
+        ein Teil der Mittelwelle / 160m / 80m / 60m / 30m / 17m / 4m
+        <br>
+        <br>
+        und auch in Nürnberg können <a href="http://nbgsdr.ddns.net/">diese</a> Bänder gehört werden:
+        40m / 20m / 15m / 10m / 6m / 137MHzSat /2m / Freenet / 70cm       
+    <br><br>
+        Die Bayernrunde kann am besten auf dem <a href="http://dillberg.dyndns.org/">Dillberg</a> verfolgt werden
+<br><br>
+        Lehrgang/Einführungskurs/Workshop um mit einem WebSDR alle
+                    Funktionen kennen zu lernen.<br>
+                    <a
+                    href="http://websdr-dillberg.ddnss.org:8100/doc/WebSDR-User-Guide.pdf"target="_blank">
+                    Englisch</a> als PDF
+                    <br>
+                    <a
+                    href="https://www.youtube.com/watch?v=UzNQzKiPwVw"target="_blank">
+                    Deutsch</a> als Video    
+    </div>
+
+    <!-- Hardware -->
+    <div id='tab_box_12' class='tab_box' style="width: 1025px; height: 260px;overflow:auto; font-family: monospace">
+      <b>Hardware</b>
+      <br>
+      Der Rechner hat 2 Prozessorkerne und kann 4 Empfänger verwalten.
+      <br>
+      Ein weiterer Rechner arbeitet als rtl_tcp-Server.Daher kann ich 4 weitere Empfänger mit anschließen.
+      Die WebSDR-Software ist generell auf 8 empfänger beschränkt.
+      Wobei es aber kein Problem darstellt, einen Weiteren SDR mit 8 weiteren Empfänger aufzustellen.(Nur mit zusätzlichen Rechnern)
+      <br>
+      Die Antenne ist eine zs6bkw, allerdings ist sie etwas abgewandelt.
+      <br>
+      Sie hängt in der Mitte auf 8m Höhe.
+      <br>
+      Die Empfänger sind Standard SDR-Play.
+      <br>
+      Wer Hardware im Schrank liegen hat und es nicht mehr nutzt, kann gerne diese Konfiguration erweitern.
+      <br>
+      <br>
+      <a href="txt/hardware.html" target="_blank">Schematische Darstellung der Hardware</a>
+    </div>
+
+    <!-- Design -->
+    <div id='tab_box_13' class='tab_box' style="width: 1025px; height:260px;overflow:auto; font-family: monospace">
+      <h3><b>Experimentelle Farbeinstellungen, die gespeichert werden</b></h3>
+      <div id="designOptions">
+        <ul>
+          <li><a href="#" class="designOption" data-design="design1">Design 1</a></li>
+          <li><a href="#" class="designOption" data-design="design2">Kontrast 1</a></li>
+          <li><a href="#" class="designOption" data-design="design3">Kontrast 2</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  
+
+<div id='tab_box_14' class='tab_box' style="width: 1025px; height:260px;overflow:auto; font-family: monospace">
+      <h3><b>Mitwirkende</b></h3>
+      Daniel Blackout aus Buechenbach
+  </div>
+</div>
+
+
+<script>
+  /**
+   * öffnet ein Tab (klick auf oberen Tab (Reiter).
+   * @param index: welcher Tab wurde geklickt, 1 bis n.
+   */
+  function openTab(index) {
+    var element = document.getElementsByTagName('div');
+    var name = "";
+    var obj;
+
+    for (var i = 0; i < element.length; i++) {
+      name = element[i].id;
+      if (name.substr(0, 8) == 'tab_box_') {
+        obj = document.getElementById(name);
+
+        obj.hidden = true;
+
+      }
+      if (name.substr(0, 8) == 'tab_top_') {
+        obj = document.getElementById(name);
+        obj.setAttribute('class', 'tab_top_passive');
+      }
+
+    }
+    var tab = document.getElementById("tab_box_" + index);
+    tab.hidden = false;
+    tab = document.getElementById("tab_top_" + index);
+    tab.setAttribute('class', 'tab_top_active');
+
+    /* www.MrKnowing.com */
+  }
+
+  function changeDesign(design) {
+    var body = document.body;
+    var tabBoxes = document.getElementsByClassName('tab_box');
+
+    // Ändern des Body-Styles
+    body.style.backgroundColor = getBackgroundColor(design);
+    body.style.color = getTextColor(design);
+
+    // Ändern des Styles aller tab_box-Elemente
+    for (var i = 0; i < tabBoxes.length; i++) {
+      tabBoxes[i].style.backgroundColor = getBackgroundColor(design);
+      tabBoxes[i].style.color = getTextColor(design);
+    }
+
+    // Speichern des Designs im Local Storage
+    localStorage.setItem('selectedDesign', design);
+  }
+
+  function getBackgroundColor(design) {
+    switch (design) {
+      case 'design1':
+        return 'white';
+      case 'design2':
+        return 'black';
+      case 'design3':
+        return 'gray';
+      default:
+        return 'white';
+    }
+  }
+
+  function getTextColor(design) {
+    switch (design) {
+      case 'design1':
+        return 'black';
+      case 'design2':
+        return 'green';
+      case 'design3':
+        return 'orange';
+      default:
+        return 'black';
+    }
+  }
+
+  // Laden des gespeicherten Designs aus dem Local Storage und Anwendung des Designs
+  var selectedDesign = localStorage.getItem('selectedDesign');
+  if (selectedDesign) {
+    changeDesign(selectedDesign);
+  }
+
+  // Event Listener für Designoptionen
+  var designOptions = document.getElementsByClassName("designOption");
+  for (var i = 0; i < designOptions.length; i++) {
+    designOptions[i].addEventListener("click", function() {
+      var design = this.getAttribute("data-design");
+      changeDesign(design);
+    });
+  }
+</script>
+
+
+  <!-- Erster Aufruf des Tabmenüs -->
+  <script type="text/javascript">
+    openTab(1); //Tab 1 öffnen
+  </script>
+</div>
+<br style="clear:both">
+
+<hr>
+<div style="font-size:80%">
+Statistics:
+<div id="stats"></div>
+
+</div>
+
+<hr>
+
+<div id="soundappletdiv"></div>
+
+<!-- Here are a few IDs that are displayed invisibly to prevent errors when a portion of the code is commented out
+e.g.  S-meter squelch, Gain control, etc.  (I don't know of a simpler way to do this!)
+-->
+
+<div style="display:none;">
+<!-- For Signal level squelch -->?
+<span id="sigsquelch_val"></span>
+
+<!-- For Deviation and SNR metering -->
+<span id="devpk">devpk</span>
+<span id="dev_avg">dev_avg</span>
+<span id="dev_pkavg">dev_pkavg</span>
+
+  <span style="font-size:65%" id="ncofreq">freq???</span>
+</div>
+
+
+
+</body>
+</html>
