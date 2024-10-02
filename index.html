@@ -1,30 +1,55 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
-	<head>
-		<title>FOSSMan's Homepage</title>
-		<meta http-equiv="onion-location" content="http://fossman66tkamfbugdjxo52tirk5wpwmkkqorr364utl672m3zxeu7ad.onion" />
-		<style type="text/css">
-        	*{
-        	        color: #00FF00;
-        	        background-color: #000000;
-        	}
-        	img{
-        	        border-radius: 360px;
-        	}
-		</style>
-	</head>
-	<body>
-		<center>
-			<h1>FOSSMan's Website</h1>
-			<p><img src="https://avatars.githubusercontent.com/0xfossman" alt="wallpaperflare.com_wallpaper.jpg"></p>
-			<p>Hi, my name is <strong>FOSSMan</strong>.
-			I like everything that has an ethernet jack and isn't controlled by big tech.</p>
-			<p><a href="https://github.com/0xfossman">My Github Page</a></p>
-			<p><a href="fossman_public.asc">My PGP Public Key</a></p>
-			<p>Contact me:
-			<a href="mailto:fossman@national.shitposting.agency">via Mail</a>
-			<a href="https://t.me/fossman_contact_bot">via Telegram</a>
-			</p>
-		</center>
-	</body>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>FOSSMan's Homepage</title>
+        <link rel="icon" href="https://avatars.githubusercontent.com/0xfossman">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <script src="assets/js/darkmode.js"></script>
+    </head>
+    <body class="dark-mode">
+        <!-- Navigation Bar -->
+        <nav class="navbar navbar-inverse bg-dark">
+            <div class="container-fluid">
+              <div class="navbar-header">
+                <a class="navbar-brand" href="#">FOSSMan</a>
+              </div>
+              <ul class="nav navbar-nav nav-tabs">
+                <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
+                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Links <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="https://jellyfin.fossman.de" target="_blank">Jellyfin</a></li>
+                    <li><a href="https://gitea.fossman.de" target="_blank">Gitea</a></li>
+                    <li><a href="https://uptime.fossman.de" target="_blank">Monitoring</a></li>
+                    <li><a href="https://github.com/0xfossman" target="_blank">GitHub</a></li>
+                  </ul>
+                </li>
+                <li><a data-toggle="tab" href="#contact">Contact</a></li>
+              </ul>
+              <ul class="nav navbar-nav navbar-right">
+                <li id="darkModeButton"><a onclick="toggleDarkMode()" href="#"><i class="bi bi-moon"></i> Light Mode</a></li>
+                <!--<li><a href="#"><i class="bi bi-person"></i> Sign Up</a></li>-->
+                <!--<li><a href="#"><i class="bi bi-box-arrow-in-right"></i> Login</a></li>-->
+              </ul>
+            </div>
+          </nav>
+        <!--Content-->
+        <div class="container">
+            <div class="tab-content">
+                <div id="home" class="tab-pane fade in active">
+                    <h3>Home</h3>
+                    <p>Lorem ipsum</p>
+                </div>
+                <div id="contact" class="tab-pane fade">
+                    <h3>Contact</h3>
+                    <p>Lorem ipsum</p>
+                </div>
+            </div>
+        </div>
+    </body>
 </html>
