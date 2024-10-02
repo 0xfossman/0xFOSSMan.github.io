@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>FOSSMan's Homepage</title>
+        <link rel="icon" href="https://avatars.githubusercontent.com/0xfossman">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <script src="assets/js/darkmode.js"></script>
+    </head>
+    <body class="dark-mode">
+        <!-- Navigation Bar -->
+        <nav class="navbar navbar-inverse bg-dark">
+            <div class="container-fluid">
+              <div class="navbar-header">
+                <a class="navbar-brand" href="#">FOSSMan</a>
+              </div>
+              <ul class="nav navbar-nav nav-tabs">
+                <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
+                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Links <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="https://jellyfin.fossman.de" target="_blank">Jellyfin</a></li>
+                    <li><a href="https://gitea.fossman.de" target="_blank">Gitea</a></li>
+                    <!--<li><a href="https://uptime.fossman.de" target="_blank">Monitoring</a></li>-->
+                    <li><a href="https://github.com/0xfossman" target="_blank">GitHub</a></li>
+                  </ul>
+                </li>
+                <li><a data-toggle="tab" href="#contact">Contact</a></li>
+              </ul>
+              <ul class="nav navbar-nav navbar-right">
+                <li id="darkModeButton"><a id="darkModeLabel" onclick="toggleDarkMode()" href="#"><i class="bi bi-moon"></i> Light Mode</a></li>
+                <!--<li><a href="#"><i class="bi bi-person"></i> Sign Up</a></li>-->
+                <!--<li><a href="#"><i class="bi bi-box-arrow-in-right"></i> Login</a></li>-->
+              </ul>
+            </div>
+          </nav>
+        <!--Content-->
+        <div class="container">
+            <div class="tab-content">
+                <div id="home" class="tab-pane fade in active">
+                    <object data="index.old.html" width="100%" height="100%">
+                </div>
+                <div id="contact" class="tab-pane fade">
+                    <h3>Contact</h3>
+                    <p>Lorem ipsum</p>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
