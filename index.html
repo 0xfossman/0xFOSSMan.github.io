@@ -25,14 +25,14 @@
                   <ul class="dropdown-menu">
                     <li><a href="https://jellyfin.fossman.de" target="_blank">Jellyfin</a></li>
                     <li><a href="https://gitea.fossman.de" target="_blank">Gitea</a></li>
-                    <li><a href="https://uptime.fossman.de" target="_blank">Monitoring</a></li>
+                    <!--<li><a href="https://uptime.fossman.de" target="_blank">Monitoring</a></li>-->
                     <li><a href="https://github.com/0xfossman" target="_blank">GitHub</a></li>
                   </ul>
                 </li>
                 <li><a data-toggle="tab" href="#contact">Contact</a></li>
               </ul>
               <ul class="nav navbar-nav navbar-right">
-                <li id="darkModeButton"><a onclick="toggleDarkMode()" href="#"><i class="bi bi-moon"></i> Light Mode</a></li>
+                <li id="darkModeButton"><a id="darkModeLabel" onclick="toggleDarkMode()" href="#"><i class="bi bi-moon"></i> Light Mode</a></li>
                 <!--<li><a href="#"><i class="bi bi-person"></i> Sign Up</a></li>-->
                 <!--<li><a href="#"><i class="bi bi-box-arrow-in-right"></i> Login</a></li>-->
               </ul>
@@ -42,8 +42,7 @@
         <div class="container">
             <div class="tab-content">
                 <div id="home" class="tab-pane fade in active">
-                    <h3>Home</h3>
-                    <p>Lorem ipsum</p>
+                    <object data="index.old.html" width="100%" height="100%">
                 </div>
                 <div id="contact" class="tab-pane fade">
                     <h3>Contact</h3>
